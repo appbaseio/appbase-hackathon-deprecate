@@ -17,7 +17,7 @@ Scoping allows OAuth clients to tell an authorization server what permissions th
 ### Minimal Code
 
 ```js
-Appbase.js('google', { authorize: { scope: ['openid'] } }, function(error, result, requestObj) {
+Appbase.auth('google', { authorize: { scope: ['openid'] } }, function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -29,7 +29,7 @@ Find out more about scopes and API endpoints supported by Google [here](https://
 ### Calling APIs
 
 ```js
-Appbase.js('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, function(error, result, requestObj) {
+Appbase.auth('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
     request.get('plus/v1/people/me', function(error, data) { // requests the profile of the user
         ...
@@ -42,7 +42,7 @@ Appbase.js('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, f
 ### Minimal Code
 
 ```js
-Appbase.js('facebook', function(error, result, requestObj) {
+Appbase.auth('facebook', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -57,7 +57,7 @@ Find out more about scopes and API endpoints supported by Facebook [here](https:
 ### Minimal Code
 
 ```js
-Appbase.js('linkedin', function(error, result, requestObj) {
+Appbase.auth('linkedin', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -72,7 +72,7 @@ Find out more about scopes and API endpoints supported by LinkedIn [here](https:
 ### Minimal Code
 
 ```js
-Appbase.js('github', function(error, result, requestObj) {
+Appbase.auth('github', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -88,7 +88,7 @@ Find out more about scopes and API endpoints supported by Github [here](https://
 ### Minimal Code
 
 ```js
-Appbase.js('dropbox', function(error, result, requestObj) {
+Appbase.auth('dropbox', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
