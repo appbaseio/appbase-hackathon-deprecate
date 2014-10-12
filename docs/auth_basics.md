@@ -97,8 +97,8 @@ Providers might even require additional parameters, which can be defined in the 
 ```js
 Appbase.auth('google', {
 	authorize: {
-			scope: ['openid'],
-			... //define additional paramters required for the provider here
+			scope: ['openid']
+			//define additional paramters required for the provider here
 		}
 	}, callback);
 
@@ -109,7 +109,7 @@ Appbase.auth('linkedin', {
 	}, callback);
 ```
 
-Findout the different configurations, scopes and code samples for all the providers here.
+Findout the different configurations, scopes and code samples for all the providers [here](/docs/auth_providers-samples.md).
 
 ## Logging Users Out
 ```js
