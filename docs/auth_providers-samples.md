@@ -6,7 +6,7 @@ You can directly use the code snippets given here for a provider, and the authen
 
 ## Scopes
 
-Scoping allows OAuth clients to tell an authorization server what permissions they’ll need on resources they’re accessing. The required scopes, can be specified while calling `Appbase.auth()`, and then we can access the data using `requestObject`, and calling provider's data endpoints.
+Scoping allows OAuth clients to tell an authorization server what permissions they’ll need on resources they’re accessing. The required scopes, can be specified while calling `Appbase.authPopup()`, and then we can access the data using `requestObject`, and calling provider's data endpoints.
 
 ## Google
 
@@ -17,7 +17,7 @@ Scoping allows OAuth clients to tell an authorization server what permissions th
 ### Minimal Code
 
 ```js
-Appbase.auth('google', { authorize: { scope: ['openid'] } }, function(error, result, requestObj) {
+Appbase.authPopup('google', { authorize: { scope: ['openid'] } }, function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -29,7 +29,7 @@ Find out more about scopes and API endpoints supported by Google [here](https://
 ### Calling APIs
 
 ```js
-Appbase.auth('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, function(error, result, requestObj) {
+Appbase.authPopup('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
     request.get('plus/v1/people/me', function(error, data) { // requests the profile of the user
         ...
@@ -42,7 +42,7 @@ Appbase.auth('google', { authorize: { scope: ['openid', 'email', 'profile'] } },
 ### Minimal Code
 
 ```js
-Appbase.auth('facebook', function(error, result, requestObj) {
+Appbase.authPopup('facebook', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -57,7 +57,7 @@ Find out more about scopes and API endpoints supported by Facebook [here](https:
 ### Minimal Code
 
 ```js
-Appbase.auth('linkedin', function(error, result, requestObj) {
+Appbase.authPopup('linkedin', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -72,7 +72,7 @@ Find out more about scopes and API endpoints supported by LinkedIn [here](https:
 ### Minimal Code
 
 ```js
-Appbase.auth('github', function(error, result, requestObj) {
+Appbase.authPopup('github', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```
@@ -88,7 +88,7 @@ Find out more about scopes and API endpoints supported by Github [here](https://
 ### Minimal Code
 
 ```js
-Appbase.auth('dropbox', function(error, result, requestObj) {
+Appbase.authPopup('dropbox', function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
 });
 ```

@@ -32,8 +32,12 @@ Appbase is all set up for your provider. It's time to code.
 
 The following code shows a popup and retrieves the user's credentials for Appbase, and Facebook.
 ```js
-Appbase.auth('facebook', function(error, result, requestObj) {
-	console.log('Logged in as:', result.uid); 
+Appbase.authPopup('facebook', function(error, result, requestObj) {
+    if(error) {
+      console.log('Error occured:', error);
+    } else {
+	  console.log('Logged in as:', result.uid); 
+    }
 });
 ```
 Appbase automatically retrieves the basic information about the user (the _me_ data) from the provider, the access tokens for Appbase and the provider and present it as the _result_.
@@ -78,31 +82,50 @@ result.post('/api/endpoint', {
 	}
 );
 ```
-Find out providers oauth API docs here:
+## Dealing with Popups and Redirects
 
- - Google
- - Facebook
- - LinkedIn
- - Gitub
- - Dropbox
+Appbase supports two different ways to authenticate with OAuth providers - via pop-up, or browser redirect.
+
+Third-party authentication methods use a browser pop-up window, or browser redirect, to prompt the user to sign-in, approve the application, and return the user's data to the requesting application.
+
+Most modern browsers block pop-up windows unless they are invoked by direct user action. Therefore, we should only invoke the `authPopup()` method for third-party authentication upon the user's click, otherwise `authRedirect()` should be used.
+
+`authRedirect()` redirects to the provider's login page, where the user can accept your app's permissions. Once he has, he is redirected to the callback url.
+
+```js
+Appbase.authRedirect('provider', 'http://yoururl.com/callback');
+```
+
+After this call, at the page where the redirect URL points, call `authCallback()`, which allows you to retrieve the credentials.
+
+```js
+//At the page where callback URL points
+Appbase.authCallback(function(error, result, requestObj) {
+    if(error) {
+      console.log('Error occured:', error);
+    } else {
+	  console.log('Logged in as:', result.uid); 
+    }
+});
+```
 
 ## Working with Scopes, and additional parameters
 Providers require different scope parameters, to access the user's data on their APIs. 
 For eg. 
 
-- The scope _openid_ is required for Google, in order to retrieve the user's ID and basic information, otherwise, user's id is not accessible and `Appbase.auth()` will throw  error: "user's id not present".
+- The scope _openid_ is required for Google, in order to retrieve the user's ID and basic information, otherwise, user's id is not accessible and `Appbase.authPopup()` will throw  error: "user's id not present".
 - LinkedIn requires *r_emailaddress* scope, to access the email address of the user. Without specifying this scope, the `result` will not contain _email_ field.
 
-Providers might even require additional parameters, which can be defined in the options to `Appbase.auth()` ,along with the _scope_:
+Providers might even require additional parameters, which can be defined in the options to `Appbase.authPopup()` ,along with the _scope_:
 ```js
-Appbase.auth('google', {
+Appbase.authPopup('google', {
 	authorize: {
 			scope: ['openid']
 			//define additional paramters required for the provider here
 		}
 	}, callback);
 
-Appbase.auth('linkedin', {
+Appbase.authPopup('linkedin', {
 	authorize: {
 			scope: ['r_emailaddress']
 		}
