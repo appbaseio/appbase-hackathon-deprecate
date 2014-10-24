@@ -103,7 +103,7 @@ Vertex References created with `$appbase.ns().v()` has all the methods exactly a
 $appbase.ns('user').v('bella').setData({having: 'Cerveja'});
 ```
 
-The  documentation for Appbase JS api is [here](http://appbase.io/docs/js/index.html).  
+The  documentation for Appbase JS api is [here](/docs/js.md).  
 
 ## Next Steps
 
