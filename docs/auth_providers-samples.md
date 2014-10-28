@@ -29,7 +29,7 @@ Find out more about scopes and API endpoints supported by Google [here](https://
 ### Calling APIs
 
 ```js
-Appbase.authPopup('google', { authorize: { scope: ['openid', 'email', 'profile'] } }, function(error, result, requestObj) {
+Appbase.authPopup('google', { authorize: { scope: ['openid email profile'] } }, function(error, result, requestObj) {
     console.log('Logged in as:', result.uid);
     request.get('plus/v1/people/me', function(error, data) { // requests the profile of the user
         ...
