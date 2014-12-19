@@ -1,4 +1,4 @@
-#![](https://scontent-b-atl.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10850206_311001062424360_393131425644423985_n.png?oh=64695626b135c24a1ba76d217876150d&oe=5538F3CC) Hack Night - Build realtime systems
+# Hack Night - Build realtime systems
 
 Appbase is building a Twilio for databases. We offer real-time, searchable, graph DB APIs accessible via Javascript and REST. 
 The idea is to build something demoable in a short time frame (2-3 hours), and collaborate with fellow hackers. The format is intentionally open, so we don't leave out any good ideas. 
