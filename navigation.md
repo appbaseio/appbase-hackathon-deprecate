@@ -2,13 +2,7 @@
 
 [Home](/index.md)
 
-[Docs]()
-
-* [Getting Started](/docs/getting_started.md)
-* [Appbase 5 minute tutorial](http://appbase.io/tutorial.html)
-* [JS Api](/docs/js.md)
-* [Authentication](/docs/auth_basics.md)
-* [AngularJS Binding](/docs/angular_basics.md)
+[Docs](http://docs.appbase.io/)
 
 [Download](/download.md)
 
